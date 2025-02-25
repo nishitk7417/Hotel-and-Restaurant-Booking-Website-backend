@@ -31,8 +31,8 @@ const listingSchema = new Schema({
         type: Number,
         required: true
     },
-    Images:{
-        type: String,
+    images:{
+        type: [String],
         required: true
     }
 }, {timestamps: true});

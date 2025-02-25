@@ -27,3 +27,9 @@ export const verifyJWT = asyncHandler(async(req, res, next) =>{
         throw new ApiError(401, error?.message || "Invalid access token")
     }
 })
+export const verifyVendor = asyncHandler(async (req, res, next) => {
+    if (req.user.role !== "Vendor") {
+        throw new ApiError(403, "Only vendors can perform this action");
+    }
+    next();
+});
