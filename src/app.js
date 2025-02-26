@@ -4,6 +4,7 @@ import cors from "cors";
 import userRouter from './routes/user.routes.js';
 import listingRouter from "./routes/listing.routes.js";
 import unitRouter from "./routes/unit.routes.js";
+import bookingRouter from "./routes/booking.routes.js";
 
 const app = express();
 app.use(cors({
@@ -19,5 +20,6 @@ app.use(cookieParser())
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/listings", listingRouter);
 app.use("/api/v1/units", unitRouter);
+app.use("/api/v1/bookings", bookingRouter);
 
 export {app}

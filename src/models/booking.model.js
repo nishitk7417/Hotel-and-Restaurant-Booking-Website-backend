@@ -1,11 +1,10 @@
-import mongoose, {Schema} from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const BookingSchema = new Schema(
   {
     customerId: { 
         type: mongoose.Schema.Types.ObjectId, 
-        ref: "User", 
-        required: true 
+        ref: "User",
     },
     listingId: { 
         type: mongoose.Schema.Types.ObjectId, 
@@ -18,14 +17,17 @@ const BookingSchema = new Schema(
         required: true 
     },
     bookingDates: {
-        checkIn: { 
-            type: Date, 
-            required: true 
-        },
-        checkOut: { 
-            type: Date, 
-            required: true 
-        },
+        type: new Schema({
+            checkIn: { 
+                type: Date, 
+                required: [true, "Check-in date is required"] 
+            },
+            checkOut: { 
+                type: Date, 
+                required: [true, "Check-out date is required"] 
+            }
+        }),
+        required: true
     },
     status: { 
         type: String, 
@@ -33,20 +35,25 @@ const BookingSchema = new Schema(
         default: "Pending" 
     },
     paymentDetails: {
-        transactionId: { 
-            type: String, 
-            default: null 
-        },
-        amount: { 
-            type: Number, 
-            required: true 
-        },
-        paymentStatus: { 
-            type: String, 
-            enum: ["Pending", "Paid", "Failed"], 
-            default: "Pending" 
-        },
+        type: new Schema({
+            transactionId: { 
+                type: String, 
+                default: null 
+            },
+            amount: { 
+                type: Number, 
+                required: [true, "Payment amount is required"] 
+            },
+            paymentStatus: { 
+                type: String, 
+                enum: ["Pending", "Paid", "Failed"], 
+                default: "Pending" 
+            }
+        }),
+        required: true
     },
-  },{ timestamps: true });
+  },
+  { timestamps: true }
+);
 
 export const Booking = mongoose.model("Booking", BookingSchema);
