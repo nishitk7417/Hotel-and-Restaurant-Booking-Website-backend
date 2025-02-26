@@ -3,6 +3,7 @@ import cookieParser from 'cookie-parser';
 import cors from "cors";
 import userRouter from './routes/user.routes.js';
 import listingRouter from "./routes/listing.routes.js";
+import unitRouter from "./routes/unit.routes.js";
 
 const app = express();
 app.use(cors({
@@ -17,5 +18,6 @@ app.use(cookieParser())
 //routes declaration
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/listings", listingRouter);
+app.use("/api/v1/units", unitRouter);
 
 export {app}

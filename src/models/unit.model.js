@@ -4,8 +4,7 @@ const unitSchema = new Schema({
 
     listingId: { 
         type: mongoose.Schema.Types.ObjectId, 
-        ref: "Listing", 
-        required: true 
+        ref: "Listing" 
     },
     type: { 
         type: String, 
@@ -26,4 +25,4 @@ const unitSchema = new Schema({
     },
 },{timestamps:true});
 
-export const unit = mongoose.model("Unit", unitSchema);
+export const Unit = mongoose.model("Unit", unitSchema);

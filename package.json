@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js"
   },
+  "type": "module",
   "author": "Nishit",
   "license": "ISC",
   "dependencies": {
